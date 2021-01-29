@@ -8,9 +8,14 @@
   "scripts": {
     "dev": "rimraf dist && cross-env NODE_ENV=development webpack -w"
   },
+  "dependencies": {
+    "miniprogram-composition-api": "^0.2.4"
+  },
   "devDependencies": {
     "@types/node": "^14.14.22",
     "@types/webpack": "^4.41.26",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
     "autoprefixer": "^10.2.3",
     "copy-webpack-plugin": "^7.0.0",
     "cross-env": "^7.0.3",
@@ -22,6 +27,7 @@
     "glob": "^7.1.6",
     "less": "^4.1.0",
     "less-loader": "^7.3.0",
+    "mini-css-extract-plugin": "^1.3.5",
     "postcss": "^8.2.4",
     "postcss-loader": "^4.2.0",
     "prettier": "^2.2.1",
@@ -29,9 +35,7 @@
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3",
     "webpack": "^5.17.0",
-    "webpack-cli": "^4.4.0"
-  },
-  "dependencies": {
-    "miniprogram-composition-api": "^0.2.4"
+    "webpack-cli": "^4.4.0",
+    "yarn": "^1.22.10"
   }
 }

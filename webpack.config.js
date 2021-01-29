@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const CopyPlugin = require('copy-webpack-plugin')
 const { ESBuildPlugin } = require('esbuild-loader')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { getEntries } = require('./scripts/utils')
 
 const srcDir = path.resolve(__dirname, 'src')
@@ -33,27 +34,20 @@ module.exports = {
       },
       {
         test: /\.(wxss|less)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[path][name].wxss',
-              context: srcDir,
-            },
-          },
-          'postcss-loader',
-          'less-loader',
-        ],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'less-loader'],
       },
     ],
   },
   plugins: [
-    new ESBuildPlugin(),
     new webpack.BannerPlugin({
       raw: true,
       include: 'app.js',
       banner: 'require("./runtime");\nrequire("./commons");\nrequire("./vendors");',
     }),
+    new MiniCssExtractPlugin({
+      filename: '[name].wxss',
+    }),
+    new ESBuildPlugin(),
     // const vendors = require("./vendors");\n
     new CopyPlugin({
       patterns: [
@@ -63,9 +57,14 @@ module.exports = {
           context: srcDir,
         },
         // {
-        //   from: '**/*.wxss',
+        //   from: '**/*.less',
         //   toType: 'dir',
         //   context: srcDir,
+        //   transform: {
+        //     transformer(content, path) {
+        //       return postcss([autoprefixer]).process(content.toString(), { syntax: less })
+        //     },
+        //   },
         // },
         {
           from: '**/*.json',

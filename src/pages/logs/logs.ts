@@ -1,7 +1,6 @@
 import { definePage, useRef, onLoad } from 'miniprogram-composition-api'
 import { formatTime } from '../../utils/util'
 import './logs.less'
-
 definePage({
   setup() {
     const logs = useRef(['123'])

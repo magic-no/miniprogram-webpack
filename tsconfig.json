@@ -2,9 +2,10 @@
   "compilerOptions": {
     "strictNullChecks": true,
     "noImplicitAny": true,
-    "module": "CommonJS",
+    "module": "ESNext",
     "target": "ES5",
     "allowJs": true,
+    "moduleResolution": "Node",
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "noImplicitThis": true,
@@ -18,7 +19,7 @@
     "pretty": true,
     "strictPropertyInitialization": true,
     "lib": ["es5"],
-    "typeRoots": ["./typings", "node_modules/@types"],
+    "typeRoots": ["./typings"],
     "rootDir": ".",
     "baseUrl": "."
   },
